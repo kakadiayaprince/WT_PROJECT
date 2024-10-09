@@ -8,12 +8,12 @@ const Main = () => {
   const { addToCart } = useContext(CartContext);
   const navigate = useNavigate();
 
-  // Navigate to the billing page when 'Buy Now' is clicked
+
   const handleBuyNow = (product) => {
     navigate('/billing', { state: { product } });
   };
 
-  // Add product to cart and notify the user
+  
   const handleAddToCart = (product) => {
     addToCart(product);
     alert(`${product.title} added to cart!`);

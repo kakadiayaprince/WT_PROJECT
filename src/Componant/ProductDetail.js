@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CartContext } from './context/CartContext';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import './ProductDetail.css'; // Import custom styles
+import './ProductDetail.css'; 
 
 const products = [
   { id: 1, title: 'Product 1', price: 100, description: 'This is Product 1', img: 'https://example.com/product1.jpg' },
@@ -15,10 +15,10 @@ const ProductDetail = () => {
   const { addToCart } = useContext(CartContext);
   const navigate = useNavigate();
 
-  // Find the product by ID, convert id to number
+  
   const product = products.find((p) => p.id === parseInt(id));
 
-  // Handle product not found
+ 
   if (!product) {
     return (
       <Container className="text-center mt-5">
@@ -28,7 +28,7 @@ const ProductDetail = () => {
     );
   }
 
-  // Format price to include ₹ symbol and commas for better readability
+ 
   const formatPrice = (price) => {
     return `₹${price.toLocaleString()}`;
   };

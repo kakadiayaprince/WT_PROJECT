@@ -1,4 +1,4 @@
-// src/components/Navbar.js
+
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from '../Componant/CartContext';
@@ -15,9 +15,9 @@ const Navbar = () => {
   };
 
   const handleSearchSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault(); 
     if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery)}`); // Navigate to search results with query in the URL
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`); 
     }
   };
 
@@ -30,7 +30,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        {/* Logo with image */}
+    
         <Link className="navbar-brand"  to="/main">
         <i className="bi bi-shop" style={{ fontSize: '50px' , color:'#f0a500' }} ></i>
         </Link>

@@ -1,12 +1,12 @@
 // src/App.js
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './Componant/Navbar'; // Adjust the path as necessary
-import Cart from './Componant/Cart'; // Adjust the path as necessary
-import ProductList from './Componant/ProductList'; // Adjust the path as necessary
-import CartProvider from './Componant/CartContext'; // Adjust the path as necessary
-import Main from './Componant/Main'; // Assuming this is a separate component
-import Login from './Componant/Login'; // Adjust the path as necessary
+import Navbar from './Componant/Navbar'; 
+import Cart from './Componant/Cart'; 
+import ProductList from './Componant/ProductList'; 
+import CartProvider from './Componant/CartContext'; 
+import Main from './Componant/Main'; 
+import Login from './Componant/Login'; 
 import SearchResults from './Componant/SearchResults'
 import BuyingPage from './Componant/BuyingPage';
 import BillingPage from './Componant/BillingPage';

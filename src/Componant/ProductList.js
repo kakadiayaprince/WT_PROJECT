@@ -1,4 +1,4 @@
-// src/components/ProductList.js
+
 import React, { useContext } from 'react'; 
 import { Container, Row, Col, Button, Spinner, Alert } from 'react-bootstrap';
 import { CartContext } from './CartContext'; 
@@ -7,7 +7,7 @@ import './ProductList.css';
 const ProductList = ({ products, searchQuery, loading }) => {
   const { addToCart } = useContext(CartContext);
 
-  // Filter products based on search query
+  
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -16,7 +16,7 @@ const ProductList = ({ products, searchQuery, loading }) => {
     <Container>
       <h2 className="text-center my-4">Featured Products</h2>
       
-      {loading ? ( // Conditional rendering for loading state
+      {loading ? ( 
         <div className="text-center">
           <Spinner animation="border" variant="primary" />
         </div>
@@ -48,9 +48,9 @@ const ProductList = ({ products, searchQuery, loading }) => {
   );
 };
 
-// Function to format price
+
 const formatPrice = (price) => {
-  return `₹${parseFloat(price).toLocaleString()}`; // Formats price with ₹ symbol and commas
+  return `₹${parseFloat(price).toLocaleString()}`; 
 };
 
 export default ProductList;

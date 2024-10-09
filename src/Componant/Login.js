@@ -14,14 +14,12 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Redirect to main page if already logged in
   useEffect(() => {
     if (isLoggedIn) {
       navigate('/main'); 
     }
   }, [isLoggedIn, navigate]);
 
-  // Handle login submission
   const handleLogin = () => {
     if (!username.trim() || !password.trim()) {
       setErrorMessage('Both username and password are required.');

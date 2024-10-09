@@ -1,13 +1,13 @@
 import React from 'react';
-import './ProductCard.css'; // Import custom styles for product card
+import './ProductCard.css'; 
 
 const ProductCard = ({ product, addToCart }) => {
-  // Format price to include ₹ symbol and proper formatting
+
   const formatPrice = (price) => {
     if (typeof price === 'string') {
       return price;
     }
-    return `₹${price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`; // Add commas to large numbers
+    return `₹${price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`; 
   };
 
   return (

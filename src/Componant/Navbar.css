@@ -1,4 +1,4 @@
-/* src/Navbar.css */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -38,27 +38,27 @@ body {
 }
 
 .nav-toggle {
-    display: none; /* Hide toggle by default */
+    display: none; 
     cursor: pointer;
 }
 
-/* Responsive styles */
+
 @media (max-width: 768px) {
     .nav-links {
-        display: none; /* Hide links on small screens */
+        display: none; 
         flex-direction: column;
         position: absolute;
-        top: 60px; /* Position below the navbar */
+        top: 60px; 
         left: 0;
         background-color: #333;
         width: 100%;
     }
     
     .nav-links.active {
-        display: flex; /* Show links when toggled */
+        display: flex; 
     }
     
     .nav-toggle {
-        display: block; /* Show toggle on small screens */
+        display: block; 
     }
 }

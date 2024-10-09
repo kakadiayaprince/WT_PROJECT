@@ -1,11 +1,11 @@
 
 
 .card {
-    transition: transform 0.2s; /* Smooth scaling on hover */
+    transition: transform 0.2s; 
   }
   
   .card:hover {
-    transform: scale(1.05); /* Scale effect on hover */
+    transform: scale(1.05); 
   }
   
 .container {
@@ -24,7 +24,7 @@ h2 {
 }
 
 .card {
-    width: 18rem; /* You can adjust the width */
+    width: 18rem; 
     margin: 10px;
     transition: transform 0.2s;
 }
@@ -34,8 +34,8 @@ h2 {
 }
 
 .card img {
-    height: 200px; /* Adjust image height */
-    object-fit: cover; /* Maintain aspect ratio */
+    height: 200px; 
+    object-fit: cover; 
 }
 
 .card-title {
@@ -43,10 +43,10 @@ h2 {
 }
 
 .card-text {
-    font-size: 1.2rem; /* Adjust font size for price */
+    font-size: 1.2rem; 
 }
 
 .btn {
-    width: 100%; /* Full width button */
+    width: 100%; 
     margin-top: 10px;
 }

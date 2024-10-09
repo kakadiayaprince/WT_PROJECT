@@ -17,7 +17,7 @@ const BuyingPage = () => {
   };
 
   const handleBuyNow = () => {
-    addToCart(product, quantity); // Added quantity to the cart
+    addToCart(product, quantity); 
     setShowAlert(true);
     navigate('/billing');
     setTimeout(() => setShowAlert(false), 3000); 

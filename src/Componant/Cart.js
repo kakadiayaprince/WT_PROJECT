@@ -8,7 +8,7 @@ const Cart = () => {
   const { cartItems, clearCart, removeFromCart } = useContext(CartContext);
   const navigate = useNavigate();
 
-  // Calculate total price with better price handling
+  
   const totalPrice = cartItems.reduce((total, item) => {
     const itemPrice = typeof item.price === 'string'
       ? parseFloat(item.price.replace('₹', '').replace(',', ''))
@@ -16,7 +16,7 @@ const Cart = () => {
     return total + (itemPrice * (item.quantity || 1));
   }, 0);
 
-  // Function to handle Buy Now button
+ 
   const handleBuyNow = (item) => {
     navigate(`/buy/${item.id}`);
   };

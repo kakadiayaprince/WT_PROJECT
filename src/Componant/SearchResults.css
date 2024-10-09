@@ -1,0 +1,44 @@
+/* src/components/SearchResults.css */
+
+.container {
+    margin-top: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 18rem; /* You can adjust the width */
+    margin: 10px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    height: 200px; /* Adjust image height */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1.2rem; /* Adjust font size for price */
+}
+
+.btn {
+    width: 100%; /* Full width button */
+    margin-top: 10px;
+}

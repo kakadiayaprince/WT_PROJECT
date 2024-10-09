@@ -3,11 +3,12 @@ import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CartContext } from '../Componant/CartContext';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import './SearchResults.css'; // Optional styling file
+import './SearchResults.css';
 
 const SearchResults = () => {
   const { products } = useContext(CartContext); // Assuming you have products in context
-  const query = new URLSearchParams(useLocation().search).get('q');
+  const location = useLocation();
+  const query = new URLSearchParams(location.search).get('q'); // Extract search query from URL
 
   // Filter products based on the search query
   const filteredProducts = products.filter(product =>

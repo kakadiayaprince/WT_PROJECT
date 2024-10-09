@@ -1,0 +1,64 @@
+/* src/Navbar.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f0a500;
+}
+
+.nav-toggle {
+    display: none; /* Hide toggle by default */
+    cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links on small screens */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Position below the navbar */
+        left: 0;
+        background-color: #333;
+        width: 100%;
+    }
+    
+    .nav-links.active {
+        display: flex; /* Show links when toggled */
+    }
+    
+    .nav-toggle {
+        display: block; /* Show toggle on small screens */
+    }
+}

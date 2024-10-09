@@ -3,15 +3,22 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from '../Componant/CartContext';
 import { Form, InputGroup } from 'react-bootstrap';
+import './Navbar.css';
 
-const Navbar = ({ onSearch }) => {
+const Navbar = () => {
   const { cartItems, isLoggedIn, logout } = useContext(CartContext);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
-    onSearch(event.target.value); // Pass search query to parent component
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`); // Navigate to search results with query in the URL
+    }
   };
 
   const handleLogout = () => {
@@ -23,25 +30,31 @@ const Navbar = ({ onSearch }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">E-Commerce</Link>
+        {/* Logo with image */}
+        <Link className="navbar-brand"  to="/main">
+        <i className="bi bi-shop" style={{ fontSize: '50px' , color:'#f0a500' }} ></i>
+        </Link>
         <div className="collapse navbar-collapse">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="nav-links navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to="/main">HOME</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/cart">Cart ({cartItems.length})</Link>
+              <Link className="nav-link" to="/cart"> CART ({cartItems.length})
+              </Link>
             </li>
           </ul>
-          <div className="d-flex justify-content-center flex-grow-1 mx-3"> {/* Centering the search bar */}
-            <InputGroup style={{ maxWidth: '400px' }}> {/* Set max width for the search bar */}
-              <Form.Control
-                type="text"
-                placeholder="Search"
-                value={searchQuery}
-                onChange={handleSearchChange}
-              />
-            </InputGroup>
+          <div className="d-flex justify-content-center flex-grow-1 mx-3">
+            <form onSubmit={handleSearchSubmit}>
+              <InputGroup style={{ maxWidth: '350px' }}>
+                <Form.Control
+                  type="text"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+              </InputGroup>
+            </form>
           </div>
           <ul className="navbar-nav ms-auto">
             {isLoggedIn ? (
@@ -50,7 +63,7 @@ const Navbar = ({ onSearch }) => {
               </li>
             ) : (
               <li className="nav-item">
-                <Link className="nav-link" to="/login">Login</Link>
+                <Link className="nav-link" to="/login">LOGIN</Link>
               </li>
             )}
           </ul>

@@ -19,15 +19,15 @@ export const CartProvider = ({ children }) => {
     { id: 10, title: 'Bluetooth Speaker', price: '₹15,259', img: 'https://th.bing.com/th/id/OIP.5dmpGAKZ-stTeXpXPpxU5AHaE6?w=267&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7' },
   ];
 
-  // Calculate total price with appropriate handling of '₹' and commas
+  
   const totalPrice = cartItems.reduce((total, item) => {
     const itemPrice = typeof item.price === 'string'
-      ? parseFloat(item.price.replace('₹', '').replace(/,/g, ''))  // Remove '₹' and commas
+      ? parseFloat(item.price.replace('₹', '').replace(/,/g, ''))  
       : item.price;
     return total + (itemPrice * (item.quantity || 1));
   }, 0);
 
-  // Add product to the cart
+ 
   const addToCart = (product, quantity = 1) => {
     const itemIndex = cartItems.findIndex(item => item.id === product.id);
     if (itemIndex > -1) {
@@ -39,22 +39,22 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // Remove product from the cart
+ 
   const removeFromCart = (item) => {
     setCartItems((prevItems) => prevItems.filter(cartItem => cartItem.id !== item.id));
   };
 
-  // Clear the cart
+ 
   const clearCart = () => {
     setCartItems([]);
   };
 
-  // Log the user out
+ 
   const logout = () => {
     setIsLoggedIn(false);
   };
 
-  // Mock login function
+  
   const login = async (username, password) => {
     if (username === 'prince' && password === '132') {
       setIsLoggedIn(true);

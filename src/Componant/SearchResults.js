@@ -1,4 +1,4 @@
-// src/components/SearchResults.js
+
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CartContext } from '../Componant/CartContext';
@@ -6,11 +6,11 @@ import { Container, Row, Col, Card, Button, Alert, Spinner } from 'react-bootstr
 import './SearchResults.css';
 
 const SearchResults = ({ loading }) => {
-  const { products, addToCart } = useContext(CartContext); // Assuming you have products and addToCart in context
+  const { products, addToCart } = useContext(CartContext); 
   const location = useLocation();
-  const query = new URLSearchParams(location.search).get('q'); // Extract search query from URL
+  const query = new URLSearchParams(location.search).get('q'); 
 
-  // Filter products based on the search query
+
   const filteredProducts = products.filter(product =>
     product.title.toLowerCase().includes(query.toLowerCase())
   );
@@ -19,7 +19,7 @@ const SearchResults = ({ loading }) => {
     <Container>
       <h2 className="text-center my-4">Search Results for: <strong>{query}</strong></h2>
       
-      {loading ? ( // Conditional rendering for loading state
+      {loading ? ( 
         <div className="text-center">
           <Spinner animation="border" variant="primary" />
         </div>
@@ -55,9 +55,9 @@ const SearchResults = ({ loading }) => {
   );
 };
 
-// Function to format price
+
 const formatPrice = (price) => {
-  return `₹${parseFloat(price).toLocaleString()}`; // Formats price with ₹ symbol and commas
+  return `₹${parseFloat(price).toLocaleString()}`;
 };
 
 export default SearchResults;

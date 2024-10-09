@@ -1,25 +1,23 @@
 import React, { useContext, useState } from 'react';
-// import { useLocation } from 'react-router-dom';
 import { CartContext } from '../Componant/CartContext';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import './BillingPage.css'; 
 
 const BillingPage = () => {
-  // const location = useLocation(); 
-  const { cartItems, totalPrice } = useContext(CartContext);  // Fetch cart items and total price from context
+ 
+  const { cartItems, totalPrice } = useContext(CartContext); 
   const [billingDetails, setBillingDetails] = useState({
     name: '',
     address: '',
     paymentMethod: 'credit-card' 
   });
 
-  // Handle changes in billing form
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setBillingDetails({ ...billingDetails, [name]: value });
   };
 
-  // Place order action (you can enhance this to submit the data to the backend)
   const handlePlaceOrder = () => {
     if (billingDetails.name && billingDetails.address) {
       alert('Order placed successfully!');

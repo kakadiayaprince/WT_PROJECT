@@ -9,11 +9,11 @@ import Main from './Componant/Main'; // Assuming this is a separate component
 import Login from './Componant/Login'; // Adjust the path as necessary
 import SearchResults from './Componant/SearchResults'
 import BuyingPage from './Componant/BuyingPage';
+import BillingPage from './Componant/BillingPage';
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
-
-  // Sample products, replace with actual products as needed
+  
   const products = [
     { id: 1, title: 'Smartphone', price: '₹26699', img: 'https://th.bing.com/th/id/OIP.1b-9nBUOcXQ1zyJC7QgcSAHaFe?w=244&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7' },
     { id: 2, title: 'Laptop', price: '₹69999', img: 'https://th.bing.com/th/id/OIP.u-WMhEdVK8Djt3-3mB5x_AHaF7?w=240&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7' },
@@ -43,6 +43,7 @@ const App = () => {
         <Route path="/search" element={<SearchResults />} />
         <Route path="/login" element={<Login/>} />
         <Route path="/buy/:productId" element={<BuyingPage />} />
+        <Route path="/billing" element={<BillingPage />} />
       </Routes>
     </CartProvider>
   );

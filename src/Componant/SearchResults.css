@@ -1,5 +1,13 @@
-/* src/components/SearchResults.css */
 
+
+.card {
+    transition: transform 0.2s; /* Smooth scaling on hover */
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+  }
+  
 .container {
     margin-top: 20px;
 }

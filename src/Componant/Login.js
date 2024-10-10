@@ -1,8 +1,7 @@
-// src/components/Login.js
 import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from './CartContext';
 import { useNavigate } from 'react-router-dom';
-import { Form, Button, Card, Spinner } from 'react-bootstrap';
+import { Form, Button, Card, Spinner, Alert } from 'react-bootstrap';
 import { FaUser, FaLock } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Login.css';
@@ -15,29 +14,30 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // Redirect to main page if already logged in
   useEffect(() => {
-    // Check if the user is already logged in
     if (isLoggedIn) {
-      navigate('/main'); // Redirect to main page if already logged in
+      navigate('/main'); 
     }
   }, [isLoggedIn, navigate]);
 
+  // Handle login submission
   const handleLogin = () => {
-    if (!username || !password) {
-      setErrorMessage('Please fill in both fields');
+    if (!username.trim() || !password.trim()) {
+      setErrorMessage('Both username and password are required.');
       return;
     }
 
     setLoading(true);
     setErrorMessage('');
 
-    login(username, password) // Assuming login returns a Promise
+    login(username, password)
       .then(() => {
         alert('Logged in successfully');
-        navigate('/main'); // Redirect to main page after successful login
+        navigate('/main');
       })
       .catch((error) => {
-        setErrorMessage(error.message || 'Login failed. Please try again.');
+        setErrorMessage(error.message || 'Login failed. Please check your credentials and try again.');
       })
       .finally(() => {
         setLoading(false);
@@ -49,45 +49,56 @@ const Login = () => {
       <Card className="login-card shadow" style={{ width: '400px' }}>
         <Card.Body>
           <h2 className="text-center mb-4">Login</h2>
-          {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+
+          {errorMessage && (
+            <Alert variant="danger" className="text-center">
+              {errorMessage}
+            </Alert>
+          )}
+
           <Form>
             <Form.Group className="mb-3" controlId="formBasicUsername">
               <Form.Label>
-                <FaUser /> Username
+                <FaUser className="me-2" /> Username
               </Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter your username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                aria-label="Username"
               />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>
-                <FaLock /> Password
+                <FaLock className="me-2" /> Password
               </Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                aria-label="Password"
               />
             </Form.Group>
 
-            <Button 
-              variant="primary" 
-              onClick={handleLogin} 
+            <Button
+              variant="primary"
+              onClick={handleLogin}
               className="w-100"
               disabled={loading}
+              aria-live="polite"
+              aria-busy={loading}
             >
               {loading ? (
-                <Spinner animation="border" size="sm" />
+                <Spinner animation="border" size="sm" role="status" aria-hidden="true" />
               ) : (
                 'Login'
               )}
             </Button>
           </Form>
+
           <p className="mt-3 text-center">
             Don't have an account? <a href="/register">Register here</a>
           </p>

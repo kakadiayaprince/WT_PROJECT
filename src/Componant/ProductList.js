@@ -1,11 +1,11 @@
-// src/Componant/ProductList.js
-import React, { useContext } from 'react'; // Added useContext import
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import { CartContext } from './CartContext'; // Ensure the import path is correct
-import './ProductList.css'; // Ensure you have appropriate styling
+// src/components/ProductList.js
+import React, { useContext } from 'react'; 
+import { Container, Row, Col, Button, Spinner, Alert } from 'react-bootstrap';
+import { CartContext } from './CartContext'; 
+import './ProductList.css'; 
 
-const ProductList = ({ products, searchQuery }) => {
-  const { addToCart } = useContext(CartContext); // Use the CartContext
+const ProductList = ({ products, searchQuery, loading }) => {
+  const { addToCart } = useContext(CartContext);
 
   // Filter products based on search query
   const filteredProducts = products.filter((product) =>
@@ -14,25 +14,43 @@ const ProductList = ({ products, searchQuery }) => {
 
   return (
     <Container>
-      <h2>Featured Products</h2>
-      <Row>
-        {filteredProducts.length === 0 ? (
-          <p>No products found.</p>
-        ) : (
-          filteredProducts.map((product) => (
-            <Col md={4} key={product.id}>
-              <div className="product-item">
-                <img src={product.img} alt={product.title} />
-                <h5>{product.title}</h5>
-                <p>{product.price}</p>
-                <Button variant="primary" onClick={() => addToCart(product)}>Buy Now</Button>
+      <h2 className="text-center my-4">Featured Products</h2>
+      
+      {loading ? ( // Conditional rendering for loading state
+        <div className="text-center">
+          <Spinner animation="border" variant="primary" />
+        </div>
+      ) : filteredProducts.length === 0 ? (
+        <Alert variant="warning" className="text-center">
+          No products found matching your search criteria.
+        </Alert>
+      ) : (
+        <Row>
+          {filteredProducts.map((product) => (
+            <Col md={4} key={product.id} className="mb-4">
+              <div className="product-item shadow-sm p-3 mb-5 bg-white rounded">
+                <img src={product.img} alt={product.title} className="img-fluid" />
+                <h5 className="mt-3">{product.title}</h5>
+                <p className="product-price">{formatPrice(product.price)}</p>
+                <Button 
+                  variant="primary" 
+                  onClick={() => addToCart(product)} 
+                  className="w-100"
+                >
+                  Add to Cart
+                </Button>
               </div>
             </Col>
-          ))
-        )}
-      </Row>
+          ))}
+        </Row>
+      )}
     </Container>
   );
+};
+
+// Function to format price
+const formatPrice = (price) => {
+  return `₹${parseFloat(price).toLocaleString()}`; // Formats price with ₹ symbol and commas
 };
 
 export default ProductList;
